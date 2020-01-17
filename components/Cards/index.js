@@ -17,8 +17,8 @@
 // </div>
 //
 // Create a card for each of the articles and add the card to the DOM.
-const cards= document.querySelector(".cards-container")  // grabbing
-
+  // grabbing
+  const cards= document.querySelector(".cards-container")
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
 .then(response=>{
     console.log(response)
@@ -28,26 +28,11 @@ axios.get('https://lambda-times-backend.herokuapp.com/articles')
         cards.append(cardCreator(item))
        })
        console.log(myArray)
-       
-      
-
-   })
-   
+    })
 })
 .catch(error=>{
     console.log("no data", error)
-  })
-
-
-
-
-
-
-
-
-
-
-
+})
 // <div class="card">
 //   <div class="headline">{Headline of article}</div>
 //   <div class="author">
@@ -76,17 +61,19 @@ function cardCreator(object){
 
 
     //Appending CHildrend to paretn
-    card.append(headline);
-    card.append(author);
-    card.append(imgContainer);
-    imgContainer.append(image);            // Image appended to imgCOntainer not card
-    card.append(authorName);
+    card.appendChild(headline);
+    card.appendChild(author);
+    author.appendChild(imgContainer);
+    imgContainer.appendChild(image);            // Image appended to imgCOntainer not card
+    author.appendChild(authorName);
 
     // Text content
     headline.textContent=object.headline;
     image.src=object.authorPhoto;
-    authorName.textContent=`By ${object.authorName}`;
+    authorName.textContent=`By: ${object.authorName}`;
 
     return card;
 
 }
+
+
