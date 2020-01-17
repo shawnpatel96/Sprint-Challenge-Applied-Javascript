@@ -17,3 +17,76 @@
 // </div>
 //
 // Create a card for each of the articles and add the card to the DOM.
+const cards= document.querySelector(".cards-container")  // grabbing
+
+axios.get('https://lambda-times-backend.herokuapp.com/articles')
+.then(response=>{
+    console.log(response)
+   const myArray= Object.values(response.data.articles)
+   myArray.forEach(items=>{
+       items.forEach(item=>{
+        cards.append(cardCreator(item))
+       })
+       console.log(myArray)
+       
+      
+
+   })
+   
+})
+.catch(error=>{
+    console.log("no data", error)
+  })
+
+
+
+
+
+
+
+
+
+
+
+// <div class="card">
+//   <div class="headline">{Headline of article}</div>
+//   <div class="author">
+//     <div class="img-container">
+//       <img src={url of authors image} />    // CHILD OF IMG-CONTIANER
+//     </div>
+//     <span>By {authors name}</span>
+//   </div>
+// </div>
+//
+
+function cardCreator(object){
+    // Creating Elements
+    const card= document.createElement('div');       // Parent Element
+    const headline= document.createElement('div');
+    const author=document.createElement('div');
+    const imgContainer= document.createElement('div');    
+    const image=document.createElement('img');        // CHILD OF IMAGE CONATINER
+    const authorName=document.createElement('span');
+
+    // Adding Class Names
+    card.classList.add('card');
+    headline.classList.add('headline');
+    author.classList.add('author');
+    imgContainer.classList.add('img-container');
+
+
+    //Appending CHildrend to paretn
+    card.append(headline);
+    card.append(author);
+    card.append(imgContainer);
+    imgContainer.append(image);            // Image appended to imgCOntainer not card
+    card.append(authorName);
+
+    // Text content
+    headline.textContent=object.headline;
+    image.src=object.authorPhoto;
+    authorName.textContent=`By ${object.authorName}`;
+
+    return card;
+
+}

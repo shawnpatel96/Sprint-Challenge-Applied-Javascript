@@ -21,14 +21,14 @@ axios.get("https://lambda-times-backend.herokuapp.com/topics")
             // Class List Assignment
             tab.classList.add('tab')
             //Text Content
-            tab.textContent=item;
+            tab.textContent=item
 
             return tab;
         }
         tabs.append(tabCreator(items));
-        // console.log(tabCreator)
+        console.log(tabCreator());
     })
-    
+  
 
 })
 .catch( error => {
