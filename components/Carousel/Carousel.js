@@ -78,3 +78,21 @@ const carousel= document.querySelector('.carousel-container');
 carousel.append(carouselCreator());
 
 
+// let currentIndex =0;
+// let imageArray=[mountainsImage, computerImage, treesImage, turnTableImage]
+
+//   leftButton.addEventListener('click', ()=>{
+//     currentIndex--
+//       if(currentIndex===0){
+//         currentIndex=imageArray.length;
+//     }
+    
+    
+// })
+
+//   rightButton.addEventListener('click',()=>{
+//     currentIndex++
+//     if(currentIndex===imageArray.length){
+//       currentIndex=0;
+//     }
+//   })
